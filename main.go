@@ -1,23 +1,15 @@
 package main
 
-// Importing fmt and time
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
+	a := []int{1, 2, 3, 4, 5, 6, 7}
+	i := 6
+	copy(a[i:], a[i+1:]) // Shift a[i+1:] left one index.
+	a[len(a)-1] = 0      // Erase last element (write zero value).
+	a = a[:len(a)-1]
+	fmt.Println(a)
 
-	t := 1628729200000
-
-	//timestamp const of needed round value (15 min)
-	dev := 900000
-
-	r := t % dev
-	var fiftenStamp int
-	if r != 0 {
-		fiftenStamp = t + (dev - r)
-	} else {
-		fiftenStamp = t
-	}
-
-	// Prints output
-	fmt.Printf("The result after rounding 't' is: %v\n", fiftenStamp)
 }
